@@ -5,5 +5,9 @@ type NoteAddModalProps = {
 };
 export const NoteAddModal = (props: NoteAddModalProps) => {
   const { isOpen, onClose } = props;
-  return <Modal isOpen={isOpen} onClose={onClose}></Modal>;
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit
+    </Modal>
+  );
 };
