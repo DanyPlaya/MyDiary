@@ -11,7 +11,7 @@ import TimerIcon from "@/shared/assets/TimerIcon.svg?url";
 import { Note } from "../types/types";
 type NoteCardProps = {
   note: Note;
-  onOpen: () => void;
+  onOpen?: () => void;
 };
 export const NoteCard = (props: NoteCardProps) => {
   const { note, onOpen } = props;
