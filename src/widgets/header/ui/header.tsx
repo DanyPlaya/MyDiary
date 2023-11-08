@@ -1,5 +1,5 @@
 import Logo from "@/shared/assets/Logo.svg?url";
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Button, Image, Text } from "@chakra-ui/react";
 export const Header = () => {
   return (
     <Box
@@ -11,10 +11,30 @@ export const Header = () => {
       as="header"
     >
       <Box
-        w={{ lg: "448px", md: "312px", sm: "186px" }}
-        h={{ lg: "110px", md: "76px", sm: "45px" }}
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
       >
-        <Image src={Logo} />
+        <Box
+          w={{ lg: "448px", md: "312px", sm: "186px" }}
+          h={{ lg: "110px", md: "76px", sm: "45px" }}
+        >
+          <Image src={Logo} />
+        </Box>
+        <Box>
+          <Button
+            color="white"
+            borderRadius={"65px"}
+            w={{ lg: "350px", md: "350px" }}
+            h={{ lg: "97px", md: "97px" }}
+            bg={"#050F28"}
+            _hover={{ bg: "#88A1DE" }}
+          >
+            <Text fontWeight={"700"} fontSize={"18px"}>
+              Написать
+            </Text>
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
