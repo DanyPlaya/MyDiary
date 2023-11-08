@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "server/db.json": {
+        "memory": 1024,
+        "includeFiles": "db.json"
+      }
+    }
+  }
