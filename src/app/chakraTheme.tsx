@@ -8,9 +8,9 @@ const customeTheme = extendTheme({
   },
   fontSizes: {},
   breakpoints: {
-    sm: "375px",
-    md: "1024px",
-    lg: "1920px",
+    sm: "374px",
+    md: "1023px",
+    lg: "1919px",
     // xl: "1200px",
     // "2xl": "1536px",
     // "3xl": "1919px",
