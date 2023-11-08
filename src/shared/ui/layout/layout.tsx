@@ -16,9 +16,7 @@ export const Layout = (props: LayoutProps) => {
         <Outlet />
       </Box>
       <ScrollRestoration />
-      <Box bottom="0" as={"footer"}>
-        {bottomSlot}
-      </Box>
+      <Box as={"footer"}>{bottomSlot}</Box>
     </Box>
   );
 };
