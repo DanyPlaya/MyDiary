@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import pkg from 'json-server';
 import path from 'path';
-const { bodyParser, create, defaults, router } = pkg;
+const { bodyParser, create, defaults, router,rewriter } = pkg;
 
 
 const server = create();
@@ -17,7 +17,10 @@ server.use(bodyParser);
 
 
 server.use(myRouter);
-
+server.use(rewriter({
+    '/api/*': '/$1',
+    
+}))
 // запуск сервера
 server.listen(3000, () => {
     console.log('server is running on 8000 port');
