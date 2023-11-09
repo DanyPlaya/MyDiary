@@ -1,6 +1,9 @@
+import { NoteAddModal } from "@/features/addNote";
 import Logo from "@/shared/assets/Logo.svg?url";
-import { Box, Button, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Image, Text, useDisclosure } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 export const Header = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
   return (
     <Box
       px={{ lg: "40px", md: "20px", sm: "10px" }}
@@ -19,10 +22,13 @@ export const Header = () => {
           w={{ lg: "448px", md: "312px", sm: "186px" }}
           h={{ lg: "110px", md: "76px", sm: "45px" }}
         >
-          <Image src={Logo} />
+          <Link to={"/"}>
+            <Image src={Logo} />
+          </Link>
         </Box>
         <Box>
           <Button
+            onClick={onOpen}
             color="white"
             borderRadius={"65px"}
             w={{ lg: "350px", md: "350px" }}
@@ -35,6 +41,7 @@ export const Header = () => {
             </Text>
           </Button>
         </Box>
+        <NoteAddModal isOpen={isOpen} onClose={onClose} />
       </Box>
     </Box>
   );
