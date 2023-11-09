@@ -1,8 +1,0 @@
-{
-    "functions": {
-      "server/db.json": {
-        "memory": 1024
-        
-      }
-    }
-  }
