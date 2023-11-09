@@ -2,8 +2,7 @@ export type Note = {
     id: number,
     title: string,
     body: string,
-    date: string,
-    time: string
+    dateTime: string,
 }
 //Dto для получения всех записей
 export type ReqNotesDto = Note[]
