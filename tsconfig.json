@@ -37,7 +37,8 @@
   },
   "include": [
     "src",
-    "types"
+    "types",
+    "server/**/*"
   ],
   "references": [
     {
