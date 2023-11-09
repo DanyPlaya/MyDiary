@@ -22,3 +22,4 @@ server.use(myRouter);
 server.listen(3000, () => {
     console.log('server is running on 8000 port');
 });
+export default server
