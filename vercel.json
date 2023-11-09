@@ -1,9 +1,11 @@
 {
-    "routes": [
-      { "handle": "filesystem" },
-      {
-        "src": "/api/(.*)",
-        "dest": "/api/server.js"
+    "functions": {
+      "api/server.js": {
+        "memory": 1024
       }
+    },
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/api/server.js" },
+      { "source": "/(.*)", "destination": "/dist/$1" }
     ]
   }
