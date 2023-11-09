@@ -7,7 +7,7 @@ const { bodyParser, create, defaults, router } = pkg;
 const server = create();
 
 // eslint-disable-next-line no-undef
-const myRouter = router(path.resolve('./server/db.json'));
+const myRouter = router(path.resolve('./api/db.json'));
 
 server.use(defaults({}));
 server.use(bodyParser);
