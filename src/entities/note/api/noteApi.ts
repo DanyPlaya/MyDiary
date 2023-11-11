@@ -29,7 +29,14 @@ export const noteApi = baseApi.injectEndpoints({
                 url: `/notes?_sort=datetime&_order=${mode}`
             }),
             providesTags: [NOTES_TAG]
+        }),
+        deleteNote: build.mutation<void, number>({
+            query: (id: number) => ({
+                url: `/notes/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: [NOTES_TAG]
         })
     })
 })
-export const { useGetNoteDetailsQuery, useGetNotesQuery, useAddNoteMutation, useLazySortNotesQuery, useSortNotesQuery } = noteApi
+export const { useGetNoteDetailsQuery, useGetNotesQuery, useAddNoteMutation, useLazySortNotesQuery, useSortNotesQuery, useDeleteNoteMutation } = noteApi
