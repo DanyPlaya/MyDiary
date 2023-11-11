@@ -1,4 +1,5 @@
 import { NoteCard } from "@/entities/note";
+import { SortNotes } from "@/features/sortNote/inex";
 import { NoteList } from "@/widgets/noteList";
 import { Box, Text } from "@chakra-ui/react";
 
@@ -15,20 +16,29 @@ export const MainPage = () => {
       bg={"#F6F6F6"}
       h={"100vh - 70px"}
     >
-      <Box>
-        <Text
-          fontSize={{ lg: "112px", md: "72px", sm: "42px" }}
-          fontWeight={"700"}
-          lineHeight={"line-height: 90%"}
-        >
-          Мой
-        </Text>
-        <Text
-          fontSize={{ lg: "112px", md: "72px", sm: "42px" }}
-          fontWeight={"700"}
-        >
-          дневничок
-        </Text>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        <Box>
+          <Text
+            fontSize={{ lg: "112px", md: "72px", sm: "42px" }}
+            fontWeight={"700"}
+            lineHeight={"line-height: 90%"}
+          >
+            Мой
+          </Text>
+          <Text
+            fontSize={{ lg: "112px", md: "72px", sm: "42px" }}
+            fontWeight={"700"}
+          >
+            дневничок
+          </Text>
+        </Box>
+        <Box>
+          <SortNotes />
+        </Box>
       </Box>
       <NoteList />
     </Box>
