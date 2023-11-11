@@ -1,3 +1,4 @@
+import { ScrollToTopButton } from "@/features/scrollTop";
 import { Box, Text } from "@chakra-ui/react";
 
 export const Footer = () => {
@@ -11,6 +12,7 @@ export const Footer = () => {
       >
         Мой дневничок
       </Text>
+      <ScrollToTopButton />
     </Box>
   );
 };
