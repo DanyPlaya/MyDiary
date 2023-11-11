@@ -1,25 +1,41 @@
 import {
   Box,
+  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Image,
+  Text,
+  useToast,
 } from "@chakra-ui/react";
 import CalendarIcon from "@/shared/assets/СalendarIcon.svg?url";
 import TimerIcon from "@/shared/assets/TimerIcon.svg?url";
 import { Note } from "../types/types";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 type NoteCardProps = {
   note: Note;
   onOpen?: () => void;
+  onClick: (id: number) => void;
 };
 
 export const NoteCard = (props: NoteCardProps) => {
-  const { note, onOpen } = props;
+  const toast = useToast();
+  const { note, onOpen, onClick } = props;
   const date = note?.datetime?.split("T")[0];
   const time = note?.datetime?.split("T")[1]?.substring(0, 5);
-
+  const handleButtonClick = () => {
+    onClick(note.id);
+    toast({
+      title: "Заметка удалена",
+      description: "Вы успешно удалили заметку!",
+      status: "success",
+      colorScheme: "blue",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
   return (
     <Card
       onClick={onOpen}
@@ -71,6 +87,21 @@ export const NoteCard = (props: NoteCardProps) => {
           <Box>{time}</Box>
         </Box>
       </CardFooter>
+      <Button
+        onClick={handleButtonClick}
+        p={" 24px 120px"}
+        display={"flex"}
+        justifyContent={"space-between"}
+        borderRadius={"40px"}
+        bg={"#88A1DE"}
+        colorScheme="whiteAlpha"
+        variant="solid"
+      >
+        <DeleteIcon />
+        <Text color={"#050F28"} fontSize={"18px"} fontWeight={"700"}>
+          Удалить заметку
+        </Text>
+      </Button>
     </Card>
   );
 };
