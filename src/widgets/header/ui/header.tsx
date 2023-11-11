@@ -1,9 +1,17 @@
 import { NoteAddModal } from "@/features/addNote";
 import Logo from "@/shared/assets/Logo.svg?url";
-import { Box, Button, Image, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Image,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 export const Header = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const toast = useToast();
   return (
     <Box
       px={{ lg: "40px", md: "20px", sm: "10px" }}
@@ -41,7 +49,7 @@ export const Header = () => {
             </Text>
           </Button>
         </Box>
-        <NoteAddModal isOpen={isOpen} onClose={onClose} />
+        <NoteAddModal toast={toast} isOpen={isOpen} onClose={onClose} />
       </Box>
     </Box>
   );
