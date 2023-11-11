@@ -1,3 +1,4 @@
+import { useAddNoteMutation } from "@/entities/note";
 import {
   Box,
   Button,
@@ -14,18 +15,19 @@ import {
   ModalOverlay,
   Text,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { NoteAddSchema, schemaNote } from "../model/schemaForm";
-import { useAddNoteMutation } from "@/entities/note";
 
 type NoteAddModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  toast: ReturnType<typeof useToast>;
 };
 export const NoteAddModal = (props: NoteAddModalProps) => {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, toast } = props;
   const [sendRequest] = useAddNoteMutation();
   const {
     register,
@@ -35,6 +37,14 @@ export const NoteAddModal = (props: NoteAddModalProps) => {
   const onSubmit: SubmitHandler<NoteAddSchema> = (data) => {
     sendRequest(data);
     onClose();
+    toast({
+      title: "Заметка создана",
+      description: "Вы успешно создали заметку!",
+      status: "success",
+      colorScheme: "blue",
+      duration: 2000,
+      isClosable: true,
+    });
   };
   return (
     <Modal
