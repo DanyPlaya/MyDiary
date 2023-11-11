@@ -2,6 +2,7 @@ import {
   Note,
   NoteCard,
   selectSortMode,
+  useDeleteNoteMutation,
   useGetNotesQuery,
   useSortNotesQuery,
 } from "@/entities/note";
@@ -14,6 +15,7 @@ type NoteListProps = {
 };
 export const NoteList = () => {
   const sortMode = useSelector(selectSortMode);
+  const [deleteCard] = useDeleteNoteMutation();
   const { data: notes, isLoading } = useSortNotesQuery(sortMode);
   console.log(notes);
   if (isLoading) <NoteListSkeleton />;
@@ -24,7 +26,9 @@ export const NoteList = () => {
       spacingY={{ lg: "80px", md: "30px", sm: "20px", base: "20px" }}
     >
       {notes ? (
-        notes?.map((note) => <NoteCard key={note.id} note={note} />)
+        notes?.map((note) => (
+          <NoteCard onClick={deleteCard} key={note.id} note={note} />
+        ))
       ) : (
         <NoteListSkeleton />
       )}
