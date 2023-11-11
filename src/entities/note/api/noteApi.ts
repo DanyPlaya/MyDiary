@@ -1,5 +1,5 @@
 import { NOTES_TAG, baseApi } from "@/shared/api";
-import { ReqAddNoteDto, ReqNoteDetailsDto, ReqNotesDto, ResAddNoteDto, ResNoteDetailsDto, ResNotesDto } from "../types/types";
+import { ReqAddNoteDto, ReqNoteDetailsDto, ReqNotesDto, ReqSortNotesDto, ResAddNoteDto, ResNoteDetailsDto, ResNotesDto, ResSortNotesDto } from "../types/types";
 
 export const noteApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -23,7 +23,13 @@ export const noteApi = baseApi.injectEndpoints({
                 method: 'POST'
             }),
             invalidatesTags: [NOTES_TAG]
+        }),
+        sortNotes: build.query<ResSortNotesDto, ReqSortNotesDto>({
+            query: (mode: ReqSortNotesDto) => ({
+                url: `/notes?_sort=datetime&_order=${mode}`
+            }),
+            providesTags: [NOTES_TAG]
         })
     })
 })
-export const { useGetNoteDetailsQuery, useGetNotesQuery, useAddNoteMutation } = noteApi
+export const { useGetNoteDetailsQuery, useGetNotesQuery, useAddNoteMutation, useLazySortNotesQuery, useSortNotesQuery } = noteApi
