@@ -1,12 +1,20 @@
-import { Note, NoteCard, useGetNotesQuery } from "@/entities/note";
+import {
+  Note,
+  NoteCard,
+  selectSortMode,
+  useGetNotesQuery,
+  useSortNotesQuery,
+} from "@/entities/note";
 import { SimpleGrid } from "@chakra-ui/react";
 import { NoteListSkeleton } from "./noteListSkeleton";
+import { useSelector } from "react-redux";
 
 type NoteListProps = {
   notes: Note[];
 };
 export const NoteList = () => {
-  const { data: notes, isLoading } = useGetNotesQuery();
+  const sortMode = useSelector(selectSortMode);
+  const { data: notes, isLoading } = useSortNotesQuery(sortMode);
   console.log(notes);
   if (isLoading) <NoteListSkeleton />;
   return (
