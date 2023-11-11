@@ -1,11 +1,15 @@
+import { baseApi } from "@/shared/api"
 import { ReducersMapObject, configureStore } from "@reduxjs/toolkit"
 import { StateSchema } from "./types/stateSchema"
-import { baseApi } from "@/shared/api"
+import { noteReducer } from "@/entities/note"
 
 
 export const createStore = () => {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        api: baseApi.reducer
+        api: baseApi.reducer,
+        note: noteReducer
+
+
     }
     const store = configureStore({
         reducer: rootReducers,
