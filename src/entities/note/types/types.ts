@@ -4,6 +4,7 @@ export type Note = {
     body: string,
     datetime: string,
 }
+export type SortMode = 'asc' | 'desc'
 //Dto для получения всех записей
 export type ReqNotesDto = void
 export type ResNotesDto = Note[]
@@ -16,3 +17,8 @@ export type ResNoteDetailsDto = Note
 
 export type ReqAddNoteDto = Omit<Note, "id">
 export type ResAddNoteDto = void
+
+//Dto для сортировки записей
+
+export type ReqSortNotesDto = SortMode
+export type ResSortNotesDto = Note[]
