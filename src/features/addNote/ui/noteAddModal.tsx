@@ -15,30 +15,27 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { NoteAddSchema, schemaNote } from "../model/schemaForm";
-import { error } from "console";
+import { useAddNoteMutation } from "@/entities/note";
+
 type NoteAddModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 export const NoteAddModal = (props: NoteAddModalProps) => {
   const { isOpen, onClose } = props;
+  const [sendRequest] = useAddNoteMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<NoteAddSchema>({ resolver: zodResolver(schemaNote) });
-  function onSubmit(values) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        console.log(errors);
-        resolve();
-      }, 3000);
-    });
-  }
+  const onSubmit: SubmitHandler<NoteAddSchema> = (data) => {
+    sendRequest(data);
+    onClose();
+  };
   return (
     <Modal
       size={{ lg: "6xl", md: "xl", sm: "sm" }}
@@ -74,11 +71,11 @@ export const NoteAddModal = (props: NoteAddModalProps) => {
                   {!!errors.title && errors.title.message}
                 </FormErrorMessage>
               </FormControl>
-              <FormControl isInvalid={!!errors.date} mb={{ md: "45px" }}>
+              <FormControl isInvalid={!!errors.datetime} mb={{ md: "45px" }}>
                 <FormLabel>Дата</FormLabel>
-                <Input type="datetime-local" {...register("date")} />
+                <Input type="datetime-local" {...register("datetime")} />
                 <FormErrorMessage>
-                  {!!errors.date && errors.date.message}
+                  {!!errors.datetime && errors.datetime.message}
                 </FormErrorMessage>
               </FormControl>
             </Box>
