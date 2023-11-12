@@ -3,6 +3,9 @@
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React-router-dom](https://reactrouter.com/en/main)
+- [React-hook-form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
 ## Запуск проекта
 
 ```console
