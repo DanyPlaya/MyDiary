@@ -9,7 +9,7 @@
 ## Запуск проекта
 
 ```console
-npm install - установка зависимостей
+npm install
 npm run dev 
 ```
 ## Docker compose запуск
