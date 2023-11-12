@@ -7,6 +7,7 @@ import {
   CardHeader,
   Image,
   Text,
+  useMediaQuery,
   useToast,
 } from "@chakra-ui/react";
 import CalendarIcon from "@/shared/assets/СalendarIcon.svg?url";
@@ -22,6 +23,7 @@ type NoteCardProps = {
 
 export const NoteCard = (props: NoteCardProps) => {
   const toast = useToast();
+  const [isSmallerThan375] = useMediaQuery("(max-width: 376px)");
   const { note, onOpen, onClick } = props;
   const date = note?.datetime?.split("T")[0];
   const time = note?.datetime?.split("T")[1]?.substring(0, 5);
@@ -89,18 +91,26 @@ export const NoteCard = (props: NoteCardProps) => {
       </CardFooter>
       <Button
         onClick={handleButtonClick}
-        p={" 24px 120px"}
-        display={"flex"}
-        justifyContent={"space-between"}
+        p={"24px 120px"}
         borderRadius={"40px"}
         bg={"#88A1DE"}
         colorScheme="whiteAlpha"
         variant="solid"
       >
-        <DeleteIcon />
-        <Text color={"#050F28"} fontSize={"18px"} fontWeight={"700"}>
-          Удалить заметку
-        </Text>
+        {isSmallerThan375 ? (
+          <DeleteIcon />
+        ) : (
+          <Box
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <DeleteIcon mr={"10px"} />
+            <Text color={"#050F28"} fontSize={"18px"} fontWeight={"700"}>
+              Удалить заметку
+            </Text>
+          </Box>
+        )}
       </Button>
     </Card>
   );

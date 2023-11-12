@@ -1,16 +1,20 @@
 import { NoteAddModal } from "@/features/addNote";
 import Logo from "@/shared/assets/Logo.svg?url";
+import MobileIcon from "@/shared/assets/MobileAdd.svg?url";
 import {
   Box,
   Button,
   Image,
   Text,
   useDisclosure,
+  useMediaQuery,
   useToast,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 export const Header = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [isLargerThan375] = useMediaQuery("(max-width: 376px)");
+  console.log(isLargerThan375);
   const toast = useToast();
   return (
     <Box
@@ -31,24 +35,40 @@ export const Header = () => {
           h={{ lg: "110px", md: "76px", sm: "45px" }}
         >
           <Link to={"/"}>
-            <Image src={Logo} />
+            <Image
+              w={{ lg: "448px", md: "312px", sm: "186px", base: "186px" }}
+              h={{ lg: "110px", md: "76px", sm: "45px", base: "186px" }}
+              src={Logo}
+            />
           </Link>
         </Box>
-        <Box>
+        {isLargerThan375 ? (
           <Button
             onClick={onOpen}
-            color="white"
-            borderRadius={"65px"}
-            w={{ lg: "350px", md: "350px" }}
-            h={{ lg: "97px", md: "97px" }}
+            w={"66px"}
+            h={"66px"}
             bg={"#050F28"}
-            _hover={{ bg: "#88A1DE" }}
+            borderRadius={"50%"}
           >
-            <Text fontWeight={"700"} fontSize={"18px"}>
-              Написать
-            </Text>
+            <Image src={MobileIcon} />
           </Button>
-        </Box>
+        ) : (
+          <Box>
+            <Button
+              onClick={onOpen}
+              color="white"
+              borderRadius={"65px"}
+              w={{ lg: "350px", md: "350px" }}
+              h={{ lg: "97px", md: "97px" }}
+              bg={"#050F28"}
+              _hover={{ bg: "#88A1DE" }}
+            >
+              <Text fontWeight={"700"} fontSize={"18px"}>
+                Написать
+              </Text>
+            </Button>
+          </Box>
+        )}
         <NoteAddModal toast={toast} isOpen={isOpen} onClose={onClose} />
       </Box>
     </Box>

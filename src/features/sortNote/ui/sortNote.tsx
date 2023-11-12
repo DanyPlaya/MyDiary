@@ -11,8 +11,8 @@ export const SortNotes = () => {
         onClick={() => dispatch(noteActions.setSortMode("desc"))}
         mr={"10px"}
         bg={"#88A1DE"}
-        w={"192px"}
-        h={"64px"}
+        w={{ lg: "192px", md: "192px", sm: "164px", base: "164px" }}
+        h={{ lg: "64px", md: "64px", sm: "30px", base: "30px" }}
         p={"40px"}
         borderRadius={"40px"}
         display={"flex"}
