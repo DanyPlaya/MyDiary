@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# Тестовое задание для Adwin
+## Технологии
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React-router-dom](https://reactrouter.com/en/main)
+- [React-hook-form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+## Запуск проекта
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```console
+npm install
+npm run dev 
 ```
+## Docker compose запуск
+- docker-compose up --build --no-recreate -d
+- docker exec -it app_container sh
+- npm i && npm run dev
+## Скрипты
+- `npm run dev` - Запуск frontend-части проекта
+- `npm run build` - Сборка проекта `production` в режиме
+- `npm run lint` - Проверка ts файлов линтером
+-  npm run start` - Запуск frontend и json server
+---
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Архитектура проекта
+
+Проект написан в соответствии с методологией Feature-Sliced.
+
+Документация FSD - [Feature-Sliced Design](https://feature-sliced.design/)
+
+## Стили
+
+Для стилизации в проекте используетя UI библеотека [Chakra UI](https://chakra-ui.com/)
+
+
