@@ -1,4 +1,4 @@
-# Тестовое задание для Adwin
+
 ## Технологии
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
